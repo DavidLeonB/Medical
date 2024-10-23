@@ -1,4 +1,4 @@
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.ArrayList"%> 
 <%@page import="java.util.List"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
@@ -11,17 +11,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="Styles/style.css" />
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
         <style>
-            :root {
-                --azul_oscuro: #0315af;
-                --azul-claro: #3fb7ee;
-                --negro: #111;
-                --gris: #555;
-                --gris2: #9191bd;
-                --blanco: #fff;
-                --aqua: #92def5;
-            }
+            
 
             body {
                 height: 100vh;
@@ -207,81 +200,9 @@
 </head>
 <body>
 
-<%
-    HttpSession userSession = request.getSession(false);
-    String usuario = null;
-    String nombre = "";
-    String apellido = "";
-    String telefono = "";
-    String eps = "";
-    String dispensador = "";
-    
-    List<String> medicamentos = new ArrayList<>();
-    List<String> cantidades = new ArrayList<>();
-
-    if (userSession != null) {
-        usuario = (String) userSession.getAttribute("usuario");
-
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/medical", "root", "");
-
-            // Consulta para obtener los datos del usuario
-            String sqlUsuario = "SELECT usuarios.nombre, usuarios.apellido, usuarios.telefono, "
-                    + "eps.nombre AS eps_nombre, ips.nombre AS ips_nombre "
-                    + "FROM usuarios "
-                    + "JOIN eps ON usuarios.id_eps = eps.id_eps "
-                    + "JOIN ips ON usuarios.id_ips = ips.id_ips "
-                    + "WHERE usuarios.nombre = ?";
-            
-            stmt = conn.prepareStatement(sqlUsuario);
-            stmt.setString(1, usuario);
-            rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                nombre = rs.getString("usuarios.nombre");
-                apellido = rs.getString("usuarios.apellido");
-                telefono = rs.getString("usuarios.telefono");
-                eps = rs.getString("eps_nombre");
-                dispensador = rs.getString("ips_nombre");
-            }
-
-            // Consulta para obtener los medicamentos
-            String sqlMedicamentos = "SELECT m.nombre AS med_nombre, um.med_men AS cantidad "
-                    + "FROM usu_medicamentos um "
-                    + "JOIN medicamentos m ON um.id_medicamentos = m.id_medicamentos "
-                    + "JOIN usuarios u ON um.id_usuarios = u.id_usuarios "
-                    + "WHERE u.nombre = ?";
-            
-            stmt = conn.prepareStatement(sqlMedicamentos);
-            stmt.setString(1, usuario);
-            rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                medicamentos.add(rs.getString("med_nombre"));
-                cantidades.add(rs.getString("cantidad"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    if (usuario != null) {
-%>
+   
     <div class="saludo">
-        <h1>Bienvenido, <%= usuario %></h1>
+        <h1>Bienvenido, </h1>  
         <h4>Estamos felices de que estés con nosotros, aquí puedes Consultar, Generar, Separar tus medicamentos.</h4>
         
         <div class="btnSaludo">
@@ -294,23 +215,23 @@
         <div class="datos">
             <div>
                 <p>Nombre</p>
-                <input type="text" value="<%= nombre %>" name="txtnombre" disabled />
+                <input type="text" value="" name="txtnombre" disabled />
             </div>
             <div>
                 <p>Apellido</p>
-                <input type="text" value="<%= apellido %>" name="txtapellido" disabled />
+                <input type="text" value="" name="txtapellido" disabled />
             </div>
             <div>
                 <p>Teléfono</p>
-                <input type="text" value="<%= telefono %>" name="txttelefono" disabled />
+                <input type="text" value="" name="txttelefono" disabled />
             </div>
             <div>
                 <p>EPS</p>
-                <input type="text" value="<%= eps %>" name="txteps" disabled />
+                <input type="text" value="" name="txteps" disabled />
             </div>
             <div>
                 <p>Dispensador de Medicina</p>
-                <input type="text" value="<%= dispensador %>" name="txtips" disabled />
+                <input type="text" value="" name="txtips" disabled />
             </div>
         </div>
         <div class="actualizaciones">
@@ -324,22 +245,16 @@
 
     <div class="areaConsulta" id="areaConsulta" style="display: none;">
         <div class="consmedica">
-            <%
-                for (int i = 0; i < medicamentos.size(); i++) {
-                    String medNombre = medicamentos.get(i);
-                    String cantidad = cantidades.get(i);
-            %>
+             
             <div class="med">
-                <p><strong><%= i + 1 %>° Medicamento</strong></p>
-                <input type="text" value="<%= medNombre %>" name="med<%= i + 1 %>" />
+                <p><strong> Medicamento</strong></p>
+                <input type="text" value="" name="med" />
                 <p>Cantidad</p>
-                <input type="text" value="<%= cantidad %>" name="cant<%= i + 1 %>" />
+                <input type="text" value="" name="cant" />
                 <p>Estado</p>
-                <input type="text" value="" name="estado<%= i + 1 %>" />
+                <input type="text" value="" name="estado" />
             </div>
-            <%
-                }
-            %>
+           
         </div>
     </div>
 
@@ -351,11 +266,7 @@
         </div>
     </div>
 
-<%
-    } else {
-        response.sendRedirect("ErrorCredenciales.jsp");
-    }
-%>
+
 
 <script>
     function habilitarInputs() {

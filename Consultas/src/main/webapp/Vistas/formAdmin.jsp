@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="javax.servlet.http.HttpSession"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -68,19 +69,8 @@
         <title>Bienvenida Admin</title>
     </head>
     <body>
-        <%
-            // Obtener la sesión actual
-            HttpSession userSession = request.getSession(false);
-            String usuario = null;
-
-    if (session != null) {
-        usuario = (String) session.getAttribute("usuario");
-    }
-
-    // Comprobar si el usuario está logueado
-    if (usuario != null) {
-%>
-        <h1>Bienvenido, <%= usuario %>!</h1>
+       
+        <h1>Bienvenido, </h1>
         <p></p>
         
         <div class="container_btn">
@@ -88,11 +78,6 @@
             <input class="Boton2" type="submit" value="Boton2" />
             <input class="Boton3" type="submit" value="Boton3" />
         </div>
-<%
-    } else {
-        // Redirigir a la página de inicio de sesión
-        response.sendRedirect("ErrorCredenciales.jsp");
-    }
-%>
+
  </body>
 </html>

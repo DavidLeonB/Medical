@@ -80,6 +80,39 @@ body {
     box-shadow:  10px 10px 10px rgba(83, 87, 100, 0.4);
 }
 
+/* Inicia estilos traidos de inicio.jsp */
+
+.form i {
+    color: #0315af;
+    font-size: 1.5rem;
+}
+
+select {
+    width: 92%;
+    margin-bottom: 5px;
+    padding: 10px;
+    border: solid 2px #0315af;
+    outline: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    color: #0315af;
+}
+
+.msjError {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centra el texto verticalmente */
+    border-radius: 20px;
+    text-align: center;
+    background-color: transparent;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-size:  1rem;
+    box-shadow:  7px 7px 7px rgba(255, 0, 0, 0.9);
+    border: solid 2px thin red;
+}
+
 .form-information {
     display:  flex;
     align-items:  center;
@@ -90,6 +123,9 @@ body {
     border-top-right-radius:  20px;
     border-bottom-right-radius:  20px;
 }
+
+
+
 
 .form-information-childs {
     padding:  0 30px;
@@ -149,6 +185,17 @@ body {
     box-shadow:  7px 7px 7px rgba(83, 87, 100, 0.4);
 }
 
+select {
+    width: 92%;
+    margin-bottom: 5px;
+    padding: 10px;
+    border: solid 2px #0315af;
+    outline: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    color: #0315af;
+}
+
 .form input {
     width:  92%;
     margin-bottom:  5px;
@@ -161,12 +208,12 @@ body {
     color:  #0315af;
 }
 
-/*.form i{
+.form i {
     color: #0315af;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
- .registrarse {
+.registrarse {
     background-color: red;
     outline: none;
     border: solid 2px var(--azul_oscuro);
@@ -177,7 +224,7 @@ body {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-*/
+}
 
 .registrarse:hover {
     background-color:  var(--gris2);
@@ -187,7 +234,7 @@ body {
     box-shadow:  10px 10px 10px rgba(83, 87, 100, 0.4);
 }
 
-   
+
 
 /*Pagina Error Credenciales*/
 
@@ -203,6 +250,57 @@ body {
     color: #f44336; /* Texto en rojo */
     font-family: 'Montserrat', sans-serif; /* Consistencia en la fuente */
 }
+
+.msjError {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centra el texto verticalmente */
+    border-radius: 20px;
+    text-align: center;
+    background-color: transparent;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-size:  1rem;
+    box-shadow:  7px 7px 7px rgba(255, 0, 0, 0.9);
+    border: solid 2px thin red;
+}
+
+
+.widget-atencion {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow:  5px 5px 5px #555;
+    padding: 10px;
+}
+
+.globo::after {
+    content: '';
+    position: absolute;
+    bottom: 100%; /* Ajusta la posición del triángulo */
+    left: 50%;
+    margin-left: -5px; /* Centra el triángulo */
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent; /* Color del fondo del globo */
+}
+
+.globo i {
+    font-size: 30px;
+    color: #0315af;
+    margin: 5px 3px;
+    cursor: pointer; /* Cambiar el cursor para indicar que son interactivos */
+}
+
+.globo i:hover {
+    color: #0d47a1; /* Cambiar color al pasar el mouse */
+}
+
+/* Termina los estilos de inicio.jsp */
 
 .close-btn {
     background: none;

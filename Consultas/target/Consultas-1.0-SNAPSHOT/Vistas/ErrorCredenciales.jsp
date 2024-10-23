@@ -45,7 +45,7 @@
                 align-items:  center;
                 justify-content:  center;
                 height:  100vh;
-                background-image:  url("../img/medical.jpg");
+                background-image:  url("../img/medical_1.jpg");
                 background-size:  cover;
             }
 
@@ -101,7 +101,7 @@
             <div class="msjError">                
                 <h4>Usuario no está logueado.</h4>
                 <p>Vuelve a intentarlo.</p>
-                <p><a href="/inicio.jsp">Inicia Sesión</a></p>
+                <p><a href="Vistas/inicio.jsp">Inicia Sesión</a></p>
             </div>
         </div>
     </body>
